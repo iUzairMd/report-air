@@ -5,17 +5,255 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-    <div class="form-container">
-        <div class="grid-container">
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-        </div>
+
+    
+    <div class="page-wrapper" id="capture">
+        <svg class="stripe-container" width="100%" height="100%" preserveAspectRatio="none">
+            <defs>
+                <pattern id="stripePattern" patternUnits="userSpaceOnUse" width="26" height="26" patternTransform="rotate(135)">
+                    <rect width="14" height="26" fill="blue"/>
+                    <rect x="14" width="12" height="26" fill="white"/>
+                </pattern>
+            </defs>
+            <rect x="27" y="0" width="16" height="100%" fill="url(#stripePattern)" />
+            <rect x="96.8%" y="0" width="16" height="100%" transform="translate(-16,0)" fill="url(#stripePattern)"/>
+        </svg>
+        <button id="printBtn" class="print-button">Print Invoice</button>
+        <div class="form-container">
+            
+            <h4 class="title">IMO DANGEROUS GOODS DECLARATION</h4>
+            <div class="requirements-container">
+                <p class="requirements">This form meets the requirements of SOLAS 1974, chapter VII, regulation 5; MARPOL 73/78, Annex III, regulation 4 and the IMDG Code, Chapter 5.4</p>
+                <span class="page-label">Page 1 of 1</span>
+            </div>     
+            
+            <!-- Grid 1 -->
+            <div class="grid-container">
+                <div class="grid-item item-1" data-number="1">
+                    <p>Shipper</p>
+                    <!-- <br> -->
+                    <p>ABDULGLEL SEAIF MOQBAL</p>
+                    <p>Aden Khor Maksro District of Happiness</p>
+                    <p>Airport Street</p>
+                    <p>ADEN</p>
+                    <p>YEMEN</p>
+                </div>
+                <div class="grid-item item-1" data-number="2"> 
+                    <p>Reference number(s)</p>
+                    <!-- <br> -->
+                    <p>12345678</p>
+                </div>
+                <div class="grid-item item-1" data-number="3"> 
+                    <p>Consignee</p>
+                    <!-- <br> -->
+                    <p>AAAA</p>
+                    <p>Dubai - United Arab Emirates KABUL</p>
+                    <p>ALEXANDRIA</p>
+                    <p>EGYPT</p>
+                </div>
+                <div class="grid-item item-1" data-number="4"> 
+                    <p>Carrier</p>
+                    <!-- <br> -->
+                    <p>New Cargo Carrier</p>
+                </div>
+                <div class="grid-item" style="justify-content: space-between;"> <p>Container packing certificate/vehicle declaration</p>
+                <p>DECLARATION</p>
+                <p>It is declared that the packing of the container/vehicle has been
+                    carried out in accordance with the General Introduction, IMDG
+                    Code, 5.4.2.</p>
+                    <p style="text-align: center; ">TO BE COMPLETED FOR SHIPMENTS
+                        IN CONTAINERS OR VEHICLES
+                        </p>
+                </div>
+                <div class="grid-item" data-number="5">
+                    <p>Name/status, company/organization of signatory</p> 
+                    <!-- <br> -->
+                    <div style="display: flex;">
+                        <p>Tony Stark</p>
+                        <p>, &nbsp</p>
+                        <p>Stark Industries</p>
+                    </div>
+                
+                </div>
+                <div class="grid-item">
+                    <p>Place and date</p>
+                    <!-- <br> -->
+                    <div style="display: flex;">
+                        <p>New York</p>
+                        <p>, &nbsp</p>
+                        <p>23-03-2013</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <p>Signature on behalf of packer</p>
+                    <!-- <br> -->
+                    <p>Tony Stark</p>
+                </div>
+                <div class="grid-item" data-number="6">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th style="padding: 2px 0px 10px 1px; text-align: left;">Ship's name and voyage No.</th>
+                                <th style="padding: 2px 0px 10px 1px; text-align: left;">Port of loading</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0px; display: flex; gap: 10px;">
+                                    <p>Giant Ship</p>
+                                    <p>1231312</p>
+                                </td> 
+                                <td style="padding: 0px;">
+                                    <p>Sharjah</p>
+                                </td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                     
+                </div>
+                <div class="grid-item" data-number="8">
+                    <p>Port of discharge</p> 
+                    <!-- <br> -->
+                    <p>Abu Dhabi</p>
+                </div>
+                <div class="grid-item" data-number="7">
+                    <p>Instructions or other matter </p>
+                    <!-- <br> -->
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id consectetur fuga ipsum quod, soluta sed reiciendis veniam cumque esse voluptate nemo necessitatibus maxime. </p>
+                </div>
+            </div>
+
+
+
+            <!-- Grid 2 -->
+            <div class="special-split-grid">
+                <div class="split-left-column">
+                    <div class="split-box">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Marks & Nos. If applicable
+                                        identification or registration
+                                        number(s) of the Unit
+                                    </th>
+                                    <th>Number and kind of packages, proper shipping name*. IMO hazard
+                                        class/division. UN number, packing group (where assigned)**,
+                                        flashpoint (in °C c.c.)**, control and emergency temperatures**,
+                                        identification of the goods as MARINE POLLUTANT**, EmS No. *** 
+                                    </th>
+                                    <th>Gross mass (kg),
+                                        net quantity/
+                                        mass**
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><p>made in italy</p></td>
+                                    <td> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam nulla reiciendis voluptates quod ipsam dolore explicabo totam vitae corporis soluta.  </td>
+                                    <td> 3000 </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="split-box split-box-lower">
+                        <p>* Synonyms should not be used. Proprietary/trade names alone are not sufficient. If applicable:
+                        </p>
+                        <p>(1) the word 'WASTE' should precede the name;
+                        </p>
+                        <p>(2) 'EMPTY UNCLEANED' or 'RESIDUE-LAST CONTAINED' should be added;
+                        </p>
+                        <p>(3) 'LIMITED QUANTITY' should be added.
+                        </p>
+                        <p>** When required in 5.4.1. of the IMDG Code.
+                        </p>
+                        <p>*** When required (see IMDG Code 3.2.1., column 15).
+                        </p>
+                    </div>
+                </div>
+                <div class="split-box split-right-narrow" data-number="9">
+                    <p>Goods delivered as:</p>
+                    <div class="checkboxdiv">
+                        <label>
+                            <input type="checkbox" name="cargo-type" value="breakbulk"> Breakbulk cargo
+                        </label><br>
+                        <label>
+                            <input type="checkbox" name="cargo-type" value="unitized"> Unitized cargo
+                        </label><br>
+                        <label>
+                            <input type="checkbox" name="cargo-type" value="bulk"> Bulk packages
+                        </label>
+                    </div>
+                    <br>
+                    <p>Type of unit
+                        (container, trailer,
+                        tank vehicle, etc.)</p>
+                    <div class="checkboxdiv2">
+                        <label>
+                            <input type="checkbox" name="open-closed" value="open"> Open
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="open-closed" value="closed"> Closed
+                        </label>
+                    </div>
+                    <br>
+                    <p>Insert 'X' in approriate box</p>
+                    <p>(This column may be left empty apart from the heading, in which case insert 
+                        appropriate description)</p>
+                </div>
+            </div>
+            
+            
+            
+            <!-- Grid 3 -->
+            <div class="container">
+                <div class="top-box" data-number="10">
+                    <p>ADDITIONAL INFORMATION 10</p>
+                    <p>In certain circumstances special information/certificates are required, see IMDG Code, 5.4.1.
+                    </p>
+                </div>
+                <div class="bottom-row">
+                    <div class="bottom-box"><p>DECLARATION</p>
+                        <p>I hereby declare that the contents of this consignment are fully and
+                            accurately described above by the proper shipping name(s) and are
+                            classified, packaged, marked and labelled/placarded, and are in all
+                            respects in proper condition for transport according to the applicable
+                            international and national governmental regulations.</p>
+                    </div>
+                    <div class="stacked-boxes">
+                        <div class="stacked-box" data-number="11 ">
+                            <p>Name/status, company/organization of signatory</p>
+                            <div style="display: flex;">
+                                <p>Tony Stark</p>
+                                <p>, &nbsp</p>
+                                <p>Stark Industries</p>
+                            </div> 
+                        </div>
+                        <div class="stacked-box">
+                            <p>Place and Date</p>  
+                            <div style="display: flex; ">
+                                <p>New York</p>
+                                <p>, &nbsp</p>
+                                <p>23-03-2013</p>
+                            </div>
+                        </div>
+                        <div class="stacked-box">
+                            <p>Signature on behalf of shipper</p> 
+                            <p>Tony Stark</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
+</div>
+
+    <script src="index.js"></script>
 </body>
 </html>
